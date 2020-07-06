@@ -13,7 +13,7 @@
 
 /** WIFI分享器設定 **/
 const char* ssid ="TP-LINK_A7366A";
-const char* password = "03487150";
+const char* password = "xxx";
 const char ip[]="192.168.0.108"; //分享器給你Server的IP位址
 const int port = 9001;
 /** WIFI分享器設定 **/
