@@ -11,12 +11,12 @@
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
 
-/** WIFI¤À¨É¾¹³]©w **/
+/** WIFIåˆ†äº«å™¨è¨­å®š **/
 const char* ssid ="TP-LINK_A7366A";
 const char* password = "03487150";
-const char ip[]="192.168.0.108"; //¤À¨É¾¹µ¹§AServerªºIP¦ì§}
+const char ip[]="192.168.0.108"; //åˆ†äº«å™¨çµ¦ä½ Serverçš„IPä½å€
 const int port = 9001;
-/** WIFI¤À¨É¾¹³]©w **/
+/** WIFIåˆ†äº«å™¨è¨­å®š **/
 
 String RotateX, RotateY, RotateZ, AccelX, AccelY, AccelZ;
 
@@ -25,10 +25,10 @@ String RotateX, RotateY, RotateZ, AccelX, AccelY, AccelZ;
 
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
-/** «ü©wPort ¥B³]¸m¬°«È¤áºİ**/
+/** æŒ‡å®šPort ä¸”è¨­ç½®ç‚ºå®¢æˆ¶ç«¯**/
 WiFiServer server(port);
 WiFiUDP Client;
-/** «ü©wPort ¥B³]¸m¬°«È¤áºİ**/
+/** æŒ‡å®šPort ä¸”è¨­ç½®ç‚ºå®¢æˆ¶ç«¯**/
 
 char  ReplyBuffer[] = "acknowledged";       // a string to send back
 
@@ -58,7 +58,7 @@ void displaySensorDetails(void)
 void setup() {
   Serial.begin(115200);
   
-  /** ¤W¹q«á°õ¦æWIFI³s½u»PÅã¥Ü¬ÛÃö¸ê°T**/
+  /** ä¸Šé›»å¾ŒåŸ·è¡ŒWIFIé€£ç·šèˆ‡é¡¯ç¤ºç›¸é—œè³‡è¨Š**/
   WiFi.mode(WIFI_STA); 
   Serial.println("Orientation Sensor Test"); Serial.println("");
   WiFi.begin(ssid,password);
@@ -76,7 +76,7 @@ void setup() {
  
   // Start the UDP client
   Client.begin(port);
-  /** ¤W¹q«á°õ¦æWIFI³s½u»PÅã¥Ü¬ÛÃö¸ê°T**/
+  /** ä¸Šé›»å¾ŒåŸ·è¡ŒWIFIé€£ç·šèˆ‡é¡¯ç¤ºç›¸é—œè³‡è¨Š**/
   
    /* Initialise the sensor */
   if(!bno.begin())
@@ -147,14 +147,14 @@ void loop() {
   Serial.println(mag, DEC);*/
   Serial.print("\r\n");
   
-  /**¶}©lµo°e¸ê®Æµ¹Serverºİ **/
+  /**é–‹å§‹ç™¼é€è³‡æ–™çµ¦Serverç«¯ **/
     // Send the distance to the client, along with a break to separate our messages
-    Client.beginPacket(ip,port); //«e­±«ü©wªºPort
+    Client.beginPacket(ip,port); //å‰é¢æŒ‡å®šçš„Port
     //Client.println(RotateX+";"+RotateY+";"+RotateZ);
     Client.println(RotateX);
     Client.endPacket();
     delay(BNO055_SAMPLERATE_DELAY_MS);
-  /**¶}©lµo°e¸ê®Æµ¹Serverºİ **/
+  /**é–‹å§‹ç™¼é€è³‡æ–™çµ¦Serverç«¯ **/
 
 }
  
